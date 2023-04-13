@@ -100,13 +100,31 @@ public class WindowCalculateJuros extends JFrame {
 		
 		controller = new ControllerCalculateJuros(capital,numParcelas,taxaDeJuro,mesesCarencia);
 		
-		tabelaParcelasPrice.setModel(new DefaultTableModel(controller.getDadosPrice(),colunas));	
+		insertModel(tabelaParcelasPrice,controller.getDadosPrice());
+		insertModel(tabelaParcelasSac,controller.getDadosSac());
+		
+		/*tabelaParcelasPrice.setModel(new DefaultTableModel(controller.getDadosPrice(),colunas));	
 		tabelaParcelasPrice.getColumnModel().getColumn(0).setPreferredWidth(8);
+		tabelaParcelasPrice.getColumnModel().getColumn(1).setCellRenderer(new formatadorMoeda());
+		tabelaParcelasPrice.getColumnModel().getColumn(2).setCellRenderer(new formatadorMoeda());
+		tabelaParcelasPrice.getColumnModel().getColumn(3).setCellRenderer(new formatadorMoeda());
+
 		
 		tabelaParcelasSac.setModel(new DefaultTableModel(controller.getDadosSac(),colunas));
 		tabelaParcelasSac.getColumnModel().getColumn(0).setPreferredWidth(8);
+		tabelaParcelasSac.getColumnModel().getColumn(1).setCellRenderer(new formatadorMoeda());
+		tabelaParcelasSac.getColumnModel().getColumn(2).setCellRenderer(new formatadorMoeda());
+		tabelaParcelasSac.getColumnModel().getColumn(3).setCellRenderer(new formatadorMoeda());*/
 		
 	}
 	
-	
+	void insertModel(JTable tabelaParcelas,Object[][] dados) {
+		
+		tabelaParcelas.setModel(new DefaultTableModel(dados,colunas));	
+		tabelaParcelas.getColumnModel().getColumn(0).setPreferredWidth(8);
+		tabelaParcelas.getColumnModel().getColumn(1).setCellRenderer(new formatadorMoeda());
+		tabelaParcelas.getColumnModel().getColumn(2).setCellRenderer(new formatadorMoeda());
+		tabelaParcelas.getColumnModel().getColumn(3).setCellRenderer(new formatadorMoeda());
+		
+	}
 }
